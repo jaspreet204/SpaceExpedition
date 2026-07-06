@@ -216,6 +216,27 @@ namespace SpaceExpedition
             int position = letter - 'A';
 
             return (char)('Z' - position);
-        }     
+        }
+
+        public void SaveInventory()
+        {
+            try
+            {
+                StreamWriter writer = new StreamWriter("expedition_summary.txt");
+
+                for (int i = 0; i < count; i++)
+                {
+                    writer.WriteLine(artifacts[i]);
+                }
+
+                writer.Close();
+
+                Console.WriteLine("Inventory saved");
+            }
+            catch
+            {
+                Console.WriteLine("Could not save file");
+            }
+        }
     }
 }

@@ -35,19 +35,17 @@ namespace SpaceExpedition
                 {
                     manager.ViewInventory();
                 }
+                
                 else if (choice == "3")
-
-                {
-                    Console.WriteLine("Save will be added later");
-                    running = false;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid choice");
+               {
+                 Console.WriteLine("Save will be added later");
+                  running = false;
                 }
             }
 
         }
+
+
       
     }
 }
