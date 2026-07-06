@@ -7,6 +7,18 @@ namespace SpaceExpedition
     {
         Artifact[] artifacts = new Artifact[100];
         int count = 0;
+
+            char[] original =
+            {
+                'A','B','C','D','E','F','G','H','I','J','K','L','M',
+                'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+            };
+
+           char[] mapped =
+            {
+                'H','Z','A','U','Y','E','K','G','O','T','I','R','J',
+                'V','W','N','M','F','Q','S','D','B','X','L','C','P'
+            };
         public void LoadVault()
         {
             try
