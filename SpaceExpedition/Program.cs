@@ -8,7 +8,11 @@ namespace SpaceExpedition
         static void Main(string[] args)
         {
             Console.WriteLine("WELCOME TO GALACTIC VAULT");
-            LoadVault();
+
+            InventoryManager manager = new InventoryManager();
+
+            manager.LoadVault();
+
         }
       
     }
