@@ -7,7 +7,6 @@ namespace SpaceExpedition
     {
         Artifact[] artifacts = new Artifact[100];
         int count = 0;
-
         public void LoadVault()
         {
             try
@@ -24,9 +23,8 @@ namespace SpaceExpedition
                         count++;
                     }
                 }
-
-                Console.WriteLine("Vault file processing");
-                Console.WriteLine("Artifacts stored: " + count);
+              Console.WriteLine("Vault file processing");
+              Console.WriteLine("Artifacts stored: " + count);
             }
             catch
             {
