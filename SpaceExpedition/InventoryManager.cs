@@ -13,7 +13,6 @@ namespace SpaceExpedition
                 'A','B','C','D','E','F','G','H','I','J','K','L','M',
                 'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
             };
-
            char[] mapped =
             {
                 'H','Z','A','U','Y','E','K','G','O','T','I','R','J',
@@ -35,6 +34,7 @@ namespace SpaceExpedition
                         count++;
                     }
                 }
+              SortArtifacts();
               Console.WriteLine("Vault file processing");
               Console.WriteLine("Artifacts stored: " + count);
             }
@@ -54,7 +54,6 @@ namespace SpaceExpedition
             }
 
             string encodedName = parts[0].Trim();
-
             string decodedName = DecodeName(encodedName);
 
             Artifact artifact = new Artifact(
@@ -85,7 +84,21 @@ namespace SpaceExpedition
 
             return result;
         }
+        public void SortArtifacts()
+        {
+            for (int i = 1; i < count; i++)
+            {
+                Artifact temp = artifacts[i];
+                int j = i - 1;
 
+                while (j >= 0 && artifacts[j].DecodedName.CompareTo(temp.DecodedName) > 0)
+                {
+                    artifacts[j + 1] = artifacts[j];
+                    j--;
+                }
+                artifacts[j + 1] = temp;
+            }
+        }
         char DecodeLetter(char letter, int level)
         {
             if (level <= 1)
