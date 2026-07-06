@@ -12,19 +12,28 @@ namespace SpaceExpedition
             Console.WriteLine("WELCOME TO GALACTIC VAULT");
             LoadVault();
         }
-
         static void LoadVault()
         {
             try
             {
                 string[] lines = File.ReadAllLines("galactic_vault.txt");
 
-                Console.WriteLine("Vault file loaded.");
-                Console.WriteLine("Lines found: " + lines.Length);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    Artifact artifact = MakeArtifact(lines[i]);
+
+                    if (artifact != null)
+                    {
+                        artifacts[count] = artifact;
+                        count++;
+                    }
+                }
+                Console.WriteLine("Vault file processing");
+                Console.WriteLine("Artifacts stored: " + count);
             }
             catch
             {
-                Console.WriteLine("Could not read galactic_vault.txt");
+                Console.WriteLine("File not found");
             }
         }
         static Artifact MakeArtifact(string line)
@@ -38,7 +47,7 @@ namespace SpaceExpedition
             }
 
             string encodedName = parts[0].Trim();
-            string decodedName = encodedName; // decode later
+            string decodedName = encodedName; 
 
             Artifact artifact = new Artifact(
                 encodedName,
