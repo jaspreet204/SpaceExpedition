@@ -55,7 +55,7 @@ namespace SpaceExpedition
 
             string encodedName = parts[0].Trim();
 
-            string decodedName = encodedName; // decoding added later
+            string decodedName = DecodeName(encodedName);
 
             Artifact artifact = new Artifact(
                 encodedName,
@@ -67,6 +67,52 @@ namespace SpaceExpedition
             );
 
             return artifact;
+        }
+        string DecodeName(string name)
+        {
+            string result = "";
+
+            string[] parts = name.Split('|');
+
+            for (int i = 0; i < parts.Length; i++)
+            {
+                char letter = parts[i][0];
+
+                int level = Convert.ToInt32(parts[i].Substring(1));
+
+                result += DecodeLetter(letter, level);
+            }
+
+            return result;
+        }
+
+        char DecodeLetter(char letter, int level)
+        {
+            if (level <= 1)
+            {
+                return MirrorLetter(letter);
+            }
+            char newLetter = MapLetter(letter);
+
+            return DecodeLetter(newLetter, level - 1);
+        }
+
+        char MapLetter(char letter)
+        {
+            for (int i = 0; i < original.Length; i++)
+            {
+                if (original[i] == letter)
+                {
+                    return mapped[i];
+                }
+            }
+            return letter;
+        }
+        char MirrorLetter(char letter)
+        {
+            int position = letter - 'A';
+
+            return (char)('Z' - position);
         }
     }
 }
