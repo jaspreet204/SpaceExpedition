@@ -138,7 +138,23 @@ namespace SpaceExpedition
 
             return -1;
         }
+        public void InsertArtifact(Artifact newArtifact)
+        {
+            int position = 0;
 
+            while (position < count && artifacts[position].DecodedName.CompareTo(newArtifact.DecodedName) < 0)
+            {
+                position++;
+            }
+
+            for (int i = count; i > position; i--)
+            {
+                artifacts[i] = artifacts[i - 1];
+            }
+
+            artifacts[position] = newArtifact;
+            count++;
+        }
         char DecodeLetter(char letter, int level)
         {
             if (level <= 1)
