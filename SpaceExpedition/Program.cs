@@ -13,8 +13,6 @@ namespace SpaceExpedition
 
             manager.LoadVault();
 
-            manager.AddArtifact();
-
             bool running = true;
 
             while (running)
@@ -29,7 +27,7 @@ namespace SpaceExpedition
 
                 if (choice == "1")
                 {
-                    Console.WriteLine("Add artifact will be added later");
+                    manager.AddArtifact();
                 }
                 else if (choice == "2")
                 {
@@ -38,8 +36,12 @@ namespace SpaceExpedition
                 
                 else if (choice == "3")
                {
-                 Console.WriteLine("Save will be added later");
-                  running = false;
+                    manager.SaveInventory();
+                    running = false;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice");
                 }
             }
 
