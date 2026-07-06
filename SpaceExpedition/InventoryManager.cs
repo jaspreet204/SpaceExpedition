@@ -13,7 +13,6 @@ namespace SpaceExpedition
                 'A','B','C','D','E','F','G','H','I','J','K','L','M',
                 'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
             };
-
            char[] mapped =
             {
                 'H','Z','A','U','Y','E','K','G','O','T','I','R','J',
