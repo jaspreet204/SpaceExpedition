@@ -9,6 +9,7 @@ namespace SpaceExpedition
         static void Main(string[] args)
         {
             Console.WriteLine("WELCOME TO GALACTIC VAULT");
+            LoadVault();
         }
 
         static void LoadVault()
