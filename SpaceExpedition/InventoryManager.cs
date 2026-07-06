@@ -155,6 +155,40 @@ namespace SpaceExpedition
             artifacts[position] = newArtifact;
             count++;
         }
+
+        public void AddArtifact()
+        {
+            Console.Write("Enter artifact file name: ");
+            string fileName = Console.ReadLine();
+
+            if (!fileName.EndsWith(".txt"))
+            {
+                fileName = fileName + ".txt";
+            }
+
+            try
+            {
+                string line = File.ReadAllText(fileName);
+
+                Artifact newArtifact = MakeArtifact(line);
+
+                int found = BinarySearch(newArtifact.DecodedName);
+
+                if (found != -1)
+                {
+                    Console.WriteLine("Artifact already exists");
+                }
+                else
+                {
+                    InsertArtifact(newArtifact);
+                    Console.WriteLine("Artifact added");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Could not read artifact file");
+            }
+        }
         char DecodeLetter(char letter, int level)
         {
             if (level <= 1)

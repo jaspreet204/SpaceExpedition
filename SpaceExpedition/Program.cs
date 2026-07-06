@@ -13,6 +13,8 @@ namespace SpaceExpedition
 
             manager.LoadVault();
 
+            manager.AddArtifact();
+
             bool running = true;
 
             while (running)
