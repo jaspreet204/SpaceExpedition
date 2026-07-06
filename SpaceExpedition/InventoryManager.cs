@@ -110,6 +110,35 @@ namespace SpaceExpedition
                 Console.WriteLine(artifacts[i]);
             }
         }
+
+        public int BinarySearch(string name)
+        {
+            int low = 0;
+            int high = count - 1;
+
+            while (low <= high)
+            {
+                int middle = (low + high) / 2;
+
+                int result = artifacts[middle].DecodedName.CompareTo(name);
+
+                if (result == 0)
+                {
+                    return middle;
+                }
+                else if (result < 0)
+                {
+                    low = middle + 1;
+                }
+                else
+                {
+                    high = middle - 1;
+                }
+            }
+
+            return -1;
+        }
+
         char DecodeLetter(char letter, int level)
         {
             if (level <= 1)
@@ -137,16 +166,6 @@ namespace SpaceExpedition
             int position = letter - 'A';
 
             return (char)('Z' - position);
-        }
-        public void ViewInventory()
-        {
-            Console.WriteLine();
-            Console.WriteLine("===== CURRENT INVENTORY =====");
-
-            for (int i = 0; i < count; i++)
-            {
-                Console.WriteLine(artifacts[i]);
-            }
-        }
+        }     
     }
 }
