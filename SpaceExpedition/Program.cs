@@ -1,7 +1,14 @@
-﻿internal class Program
+﻿using System;
+
+namespace SpaceExpedition
 {
-    private static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello, World!");
+        static Artifact[] artifacts = new Artifact[100];
+        static int count = 0;
+        static void Main(string[] args)
+        {
+            Console.WriteLine("WELCOME TO GALACTIC VAULT");
+        }
     }
 }
