@@ -35,6 +35,7 @@ namespace SpaceExpedition
                     }
                 }
               SortArtifacts();
+
               Console.WriteLine("Vault file processing");
               Console.WriteLine("Artifacts stored: " + count);
             }
@@ -99,6 +100,16 @@ namespace SpaceExpedition
                 artifacts[j + 1] = temp;
             }
         }
+        public void ViewInventory()
+        {
+            Console.WriteLine();
+            Console.WriteLine("===== CURRENT INVENTORY =====");
+
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(artifacts[i]);
+            }
+        }
         char DecodeLetter(char letter, int level)
         {
             if (level <= 1)
@@ -126,6 +137,16 @@ namespace SpaceExpedition
             int position = letter - 'A';
 
             return (char)('Z' - position);
+        }
+        public void ViewInventory()
+        {
+            Console.WriteLine();
+            Console.WriteLine("===== CURRENT INVENTORY =====");
+
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(artifacts[i]);
+            }
         }
     }
 }

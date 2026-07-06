@@ -13,6 +13,8 @@ namespace SpaceExpedition
 
             manager.LoadVault();
 
+            manager.ViewInventory();
+
         }
       
     }
