@@ -13,6 +13,7 @@ namespace SpaceExpedition
                 'A','B','C','D','E','F','G','H','I','J','K','L','M',
                 'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
             };
+
            char[] mapped =
             {
                 'H','Z','A','U','Y','E','K','G','O','T','I','R','J',
@@ -72,15 +73,25 @@ namespace SpaceExpedition
         {
             string result = "";
 
-            string[] parts = name.Split('|');
+            string[] words = name.Split(' ');
 
-            for (int i = 0; i < parts.Length; i++)
+            for (int w = 0; w < words.Length; w++)
             {
-                char letter = parts[i][0];
+                string[] parts = words[w].Split('|');
 
-                int level = Convert.ToInt32(parts[i].Substring(1));
+                for (int i = 0; i < parts.Length; i++)
+                {
+                    char letter = parts[i][0];
 
-                result += DecodeLetter(letter, level);
+                    int level = Convert.ToInt32(parts[i].Substring(1));
+
+                    result += DecodeLetter(letter, level);
+                }
+
+                if (w < words.Length - 1)
+                {
+                    result += " ";
+                }
             }
 
             return result;
@@ -103,14 +114,13 @@ namespace SpaceExpedition
         public void ViewInventory()
         {
             Console.WriteLine();
-            Console.WriteLine("===== CURRENT INVENTORY =====");
+            Console.WriteLine(" CURRENT INVENTORY ");
 
             for (int i = 0; i < count; i++)
             {
                 Console.WriteLine(artifacts[i]);
             }
         }
-
         public int BinarySearch(string name)
         {
             int low = 0;
@@ -151,11 +161,9 @@ namespace SpaceExpedition
             {
                 artifacts[i] = artifacts[i - 1];
             }
-
             artifacts[position] = newArtifact;
             count++;
         }
-
         public void AddArtifact()
         {
             Console.Write("Enter artifact file name: ");
@@ -165,7 +173,6 @@ namespace SpaceExpedition
             {
                 fileName = fileName + ".txt";
             }
-
             try
             {
                 string line = File.ReadAllText(fileName);
@@ -199,7 +206,6 @@ namespace SpaceExpedition
 
             return DecodeLetter(newLetter, level - 1);
         }
-
         char MapLetter(char letter)
         {
             for (int i = 0; i < original.Length; i++)
@@ -217,7 +223,6 @@ namespace SpaceExpedition
 
             return (char)('Z' - position);
         }
-
         public void SaveInventory()
         {
             try
@@ -230,7 +235,6 @@ namespace SpaceExpedition
                 }
 
                 writer.Close();
-
                 Console.WriteLine("Inventory saved");
             }
             catch
